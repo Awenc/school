@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/usermsg.css">
+
+    <title>校友信息管理系统</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display 收缩导航栏的汉堡标签-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <!-- <img class="fl_l" id="logo" src="img/logo.png" width="45" height="45" alt=""> -->
+                        <span>KD校友信息</span>
+                    </a>
+                </div>
+            
+                <!-- Collect the nav links, forms, and other content for toggling 导航栏的内容-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/usermsg.html">个人信息</a></li>
+                        <li><a href="/school.html">校友信息</a></li>
+                        <li><a href="/active.html">活动信息</a></li>
+                        <li><a href="#">关于网站</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="load.html"><span class="glyphicon glyphicon-user"></span>登录</a></li>
+                        <li><a href="reg.html"><span class="glyphicon glyphicon-pencil"></span>注册</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+                        <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                        </div><!-- /input-group -->
+                    </form>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+    </nav>
+    <div id="msg">   
+        <div class="msg_left fl_l ">
+            <ul>
+                <li>个人信息</li>
+                <li>关注的活动</li>
+                <li>我的活动</li>
+                <li>填写或者修改信息</li>
+                <li>。。。</li>
+            </ul>
+        </div>
+        <div class="msg_right  container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2 col-lg-6">
+                     <h3 class="tit">个人信息</h3>
+                     <ul class="selfMsg clearfix">
+                         <li>姓名：张三</li>
+                         <li>年龄：22</li>
+                         <li>性别：男</li>
+                         <li>出生日期：1996.5.12</li>
+                     </ul>
+                     <ul class="jobMsg">
+                         <li>专业班级：信管141班</li>
+                         <li>现职业：程序员</li>
+                         <li>现居住地：长沙</li>
+                     </ul>
+                     <ul class="telMsg">
+                        <li>qq：123456789</li>
+                        <li>邮箱：123456778@qq.com</li>
+                        <li>tel:123456789801</li>
+                    </ul>
+                    <div class="about">
+                        <p>个人介绍:我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥
+                            我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥
+                            我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥</p>
+                    </div>
+                    <a href="/" class="btn btn-danger ">修改</a> 
+                </div>
+                           
+            </div>
+            
+            <!-- 个人信息  姓名  年龄 性别 出生日期  班级（毕业班级） 职业 现居住地 qq  电话 邮箱  -->
+        </div>
+    </div>
+            
+</body>
+</html>

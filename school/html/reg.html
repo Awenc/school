@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/loginAndreg.css">
+
+    <title>校友信息管理系统</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display 收缩导航栏的汉堡标签-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <!-- <img class="fl_l" id="logo" src="img/logo.png" width="45" height="45" alt=""> -->
+                        <span>KD校友信息</span>
+                    </a>
+                </div>
+            
+                <!-- Collect the nav links, forms, and other content for toggling 导航栏的内容-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/usermsg.html">个人信息</a></li>
+                        <li><a href="/school.html">校友信息</a></li>
+                        <li><a href="/active.html">活动信息</a></li>
+                        <li><a href="#">关于网站</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="load.html"><span class="glyphicon glyphicon-user"></span>登录</a></li>
+                        <li><a href="reg.html"><span class="glyphicon glyphicon-pencil"></span>注册</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+                        <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                        </div><!-- /input-group -->
+                    </form>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+    </nav>
+    <div id="Reg">   
+        <h3 id="title" class="move">用户注册</h3>
+        <div>
+            <input type="text" class="text move" placeholder="账号" id="username" name="username">
+            <span class="errormsg"></span>
+        </div>
+        <div>
+            <input type="password" class="text move" placeholder="密码" id="password" name="password">
+            <span class="errormsg"></span>
+        </div>
+        <div>
+            <input type="password" class="text move" placeholder="确认密码" id="passwordSure">
+            <span class="errormsg"></span>
+        </div>
+        <div>
+            <input type="text" class="text move" placeholder="昵称" name="nickname">
+            <span class="errormsg"></span>
+        </div>
+        <input type="button" class="btn move" id="sure" value="注册">
+        <input type="button" class="btn" id="back" value="返回登录">
+    </div>
+            
+</body>
+</html>

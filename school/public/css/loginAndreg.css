@@ -1,0 +1,91 @@
+#login,#Reg{
+    position:absolute;
+    width:272px;
+    height:300px;
+    top:30%;
+    left:40%;
+    z-index:10;
+}
+.move{
+    margin-top:20px;
+}
+h3{
+    font-size:30px;
+    font-weight:700;
+    color:rgb(140,140,140);
+    font-family:"微软雅黑";
+    text-align:center;
+    margin-bottom:30px;
+    cursor:move;
+}
+input.text{
+    width:270px;
+    height:42px;
+    color:#fff;
+    background:rgba(45,45,45,0.15);
+    border-radius:6px;
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 2px 3px 0 rgba(0,0,0,.1) inset;
+    text-indent:10px;
+}
+input.btn{		
+    width:272px;
+    height:44px;
+    box-shadow:0 15px 30px 0 rgba(0,0,0,.1);
+}
+
+input:focus{
+    outline:none;
+    box-shadow:0 2px 3px 0 rgba(0,0,0,.1) inset,0 2px 7px 0 rgba(0,0,0,.2);
+}
+input::-webkit-input-placeholder{color:#fff}
+#submit,#sure{
+    background:rgb(156,46,12);
+    color:rgb(255,190,170);			
+}
+#button{
+    background:rgb(13,127,156);
+    color:rgb(170,238,255);
+    margin-top:5px;
+}
+#login{
+    opacity:1;
+    z-index:15;
+}
+#Reg{
+    top:16%;
+}
+#Reg .move{
+    margin-top:15px;
+}
+#sure,#back{
+    width:135px;
+    height:42px;
+    margin-left:1px;
+    margin-top:16px;
+    float:left;
+}
+#back{
+    background:rgb(13,127,156);
+    color:rgb(170,238,255);
+}
+#type{
+    display:none;
+}
+.errormsg{
+    position:relative;
+    margin-left:5px;
+    margin-top:-22px;
+    opacity:0;		
+}
+.error{
+    opacity:1;	
+    color:red;				
+}
+.sure{
+    opacity:1;
+    color:green;
+}
+#Reg div{
+    width:370px;
+}

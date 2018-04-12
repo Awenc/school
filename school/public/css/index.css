@@ -1,0 +1,12 @@
+.txt h2,.txt h4{
+    /* border:1px solid black; */
+    text-align: center;
+    margin:20px auto;
+    color:rgb(140,140,140);
+}
+.txt {
+    height:100%;
+}
+.txt div{
+    margin-top:15%;
+}

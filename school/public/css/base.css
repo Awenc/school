@@ -1,0 +1,49 @@
+/*公共样式库*/
+
+*{
+	margin:0;
+	padding: 0;
+	/*去除高亮的效果*/
+	-webkit-tap-highlight-color: transparent;
+	/*盒子模型*/
+	box-sizing: border-box;  
+	/*去掉3d效果*/
+	-webkit-appearance: none;
+}
+input{
+	/*去掉表单框的边框和3d效果*/
+	border:0;
+	-webkit-appearance: none;
+}
+a{
+	/*a标签去掉下滑线*/
+	text-decoration: none;
+	color:rgb(128,128,128);
+	cursor: pointer;
+}
+li{
+	list-style: none;
+}
+
+/*向左向右浮动*/
+.fl_l{
+	float:left;
+}
+.fl_r{
+	float:right;
+}
+
+/* 清除浮动 */
+.clearfix::before,    /*前面的伪元素 */
+.clearfix::after {
+	content: "";      	/*内容*/
+	display: block;   	/*块状元素*/
+	visibility: hidden; /*不可见*/
+	height: 0;    		/*高度为0*/
+	clear: both;  		/*清除浮动*/
+}
+/*去掉图片默认的间隙*/
+/*img{
+	display: block;
+}*/
+
