@@ -71,13 +71,92 @@
             <input type="password" class="text move" placeholder="确认密码" id="passwordSure">
             <span class="errormsg"></span>
         </div>
-        <div>
-            <input type="text" class="text move" placeholder="昵称" name="nickname">
-            <span class="errormsg"></span>
-        </div>
         <input type="button" class="btn move" id="sure" value="注册">
         <input type="button" class="btn" id="back" value="返回登录">
     </div>
             
 </body>
+<script>
+
+   //判断账号是否存在 
+    $("#username").blur(function(){
+        var username=$(this).val();
+        if($(this).val() == ""){
+            $("#username").next().addClass("error").html("不能为空").removeClass("sure");
+        }else{
+            $.ajax({
+                
+                type: "get",
+                url: "/users/isUserExit",    //这是传输到哪个地方进行处理
+                contentType: "application/json; charset=utf-8",   //传输方式
+                data:{
+                    "username":username
+                },  //这是传输的参数
+                dataType: "json",   //传输的格式是json
+                success: function (data) {    //成功后的回调函数
+                    console.log(data.isExit);
+                if(data.isExit == 0){
+                    $("#username").next().addClass("sure").html("正确").removeClass("error");
+                    isSure=true;
+                }else{
+                    $("#username").next().addClass("error").html("账号存在").removeClass("sure");
+                    isSure=false;
+                }
+
+                },
+                error: function (err) {
+                    alert("错误");
+                }
+
+            });			
+        }
+
+
+
+    })
+
+    //判断两次密码是否一样
+
+    $("#password").blur(function(){
+        if($("#password").val() ==""){
+            $("#password").next().addClass("error").html("不能为空").removeClass("sure")
+        }else{
+            $("#password").next().addClass("sure").html("正确").removeClass("error")
+        }
+    });
+
+    $("#passwordSure").blur(function(){
+        if($("#password").val() !=  $("#passwordSure").val() ){
+            $("#passwordSure").next().addClass("error").html("密码不一样").removeClass("sure");            
+        }else if($("#password").val() ==""){
+            $("#passwordSure").next().addClass("error").html("先填写密码").removeClass("sure");    
+               
+        }else{
+            $("#passwordSure").next().addClass("sure").html("正确").removeClass("error");
+        }
+    })
+
+
+    //注册事件
+    $("#sure").click(function(){
+        var usermsg={"username":$("#username").val(),"password":$("#password").val()}
+        $.ajax({
+            type:"post",
+            url:"/users/add",
+            // contentType:"application/json; charset=utf-8",
+            data:usermsg,
+            dataType:"json",
+            success:function(data){
+                if(data.isTrue == 0){
+                    alert("注册成功");
+                }else{
+                    alert("注册失败");
+                }
+            },
+            error:function(e){
+
+            }
+        })
+    });
+</script>
 </html>
