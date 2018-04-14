@@ -71,28 +71,27 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-2 col-lg-6">
                      <h3 class="tit">个人信息</h3>
-                     <ul class="selfMsg clearfix">
-                         <li>姓名：张三</li>
-                         <li>年龄：22</li>
-                         <li>性别：男</li>
-                         <li>出生日期：1996.5.12</li>
+                     <ul class="selfMsg clearfix" id="">
+                         <li>姓名：<input  class="a" type="text" value="张三" disabled="false"></li>
+                         <li>年龄：<input type="text" value="22" disabled="disabled"></li>
+                         <li>性别：<input type="text" value="男" disabled="disabled"></li>
+                         <li>出生日期：<input type="text" value="1996.5.12" disabled="disabled"></li>
                      </ul>
                      <ul class="jobMsg">
-                         <li>专业班级：信管141班</li>
-                         <li>现职业：程序员</li>
-                         <li>现居住地：长沙</li>
+                         <li>专业班级：<input type="text" value="信管141班" disabled="disabled"></li>
+                         <li>现职业：<input type="text" value="程序员" disabled="disabled"></li>
+                         <li>现居住地：<input type="text" value="长沙" disabled="disabled"></li>
                      </ul>
                      <ul class="telMsg">
-                        <li>qq：123456789</li>
-                        <li>邮箱：123456778@qq.com</li>
-                        <li>tel:123456789801</li>
+                        <li>qq：<input type="text" value="123456789" disabled="disabled"></li>
+                        <li>邮箱：<input type="text" value="123456778@qq.com" disabled="disabled"></li>
+                        <li>tel:<input type="text" value="123456789801" disabled="disabled"></li>
                     </ul>
                     <div class="about">
-                        <p>个人介绍:我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥
-                            我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥
-                            我是你大哥我是你大哥我是你大哥我是你大哥我是你大哥</p>
+                        <p>个人介绍:</p>
+                        <input type="text" value="这是我的自我介绍" disabled="disabled">   
                     </div>
-                    <a href="/" class="btn btn-danger ">修改</a> 
+                    <a id="changeUserMsg" class="btn btn-danger ">修改</a> 
                 </div>
                            
             </div>
@@ -102,4 +101,12 @@
     </div>
             
 </body>
+<script>
+
+    //点击修改个人信息
+    $("#changeUserMsg").click(function(){
+        $(".a").css("disabled","");
+        return false;
+    })
+</script>
 </html>
