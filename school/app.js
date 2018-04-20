@@ -7,9 +7,17 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var userMsg = require('./routes/userMsg');
+
+//session的使用
+var session=require("express-session");
+//session的使用
+
+
+
 
 var app = express();
-
+app.use(session({secret:'abcdd',name:"user" ,cookie:{maxAge: 60*1000*3 } }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'html')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/userMsg', userMsg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,7 +5,6 @@ var userLoad=require("../lib/userLoad");
 /* GET users listing. */
 
 
-
 router.post('/add', function(req, res, next) {
 	console.log("aaa");
   var option={
@@ -27,6 +26,7 @@ router.post('/load', function(req, res, next) {
 		"password":req.body.password,
 	};
 	userLoad.isUser(option,req,res);
+
 });
 
 module.exports = router;

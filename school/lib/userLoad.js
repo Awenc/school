@@ -11,8 +11,12 @@ exports.isUser=function(option,req,res){
         for(var i=0;i<result.length;i++){
             if(result[i].username == option.username){
                 if(result[i].password == option.password){
-                    exit=true;
+                    exit=true; 
+                    req.session.username=result[i].username;
                     res.json({"isExit": 0}); //登录成功
+
+                    //添加到session中
+
                     break;                    
                 }
 
