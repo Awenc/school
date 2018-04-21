@@ -31,4 +31,9 @@ router.post('/changed', function(req, res, next) {
 });
 
 
+router.post('/changedPassword', function(req, res, next) {
+	userMsg.changePassword(req.body.password,req,res);
+});
+
+
 module.exports = router;

@@ -19,12 +19,58 @@ exports.findUserMsg=function(username,req,res){
 }
 // 在数据库中修改用户信息
 exports.changeUser=function(option,req,res){
-	var  userAddSql = "UPDATE user_msg SET name=?,age=?,sex=?,birth=?,nowclass=?,job=?,address=?,qqnum=?,mail=?,tel=?,about=? WHERE username=?";
-	var  userAddSql_Params = [option.name,option.age,option.sex,option.birth,option.nowclass,option.job,option.address,option.qqnum,option.mail,option.tel,option.about,option.username];
-	console.log(option);
+
+	//判断数据库中有没有信息 
+
+	//没有信息  insert
+	var sql="SELECT *FROM user_msg WHERE username=?"
+	var sql_val=[option.username];
+	con.query(sql,sql_val,function(err,result){
+		
+		if(result.length==0){
+			//新插入一条数据
+			var insertUserSql="INSERT INTO user_msg(username,name,age,sex,birth,nowclass,job,address,qqnum,mail,tel,about) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
+			var insertUserSql_Params=[option.username,option.name,option.age,option.sex,option.birth,option.nowclass,option.job,option.address,option.qqnum,option.mail,option.tel,option.about];
+			con.query(insertUserSql,insertUserSql_Params,function (err, result) {
+				if(err) throw err;
+				if(result.affectedRows == 1){
+					res.json({"isChanged":1});			
+				}else{
+					res.json({"isChanged":0})
+				}
+
+			});	
+		}else{
+			//有信息 updata
+
+			
+			var  userAddSql = "UPDATE user_msg SET name=?,age=?,sex=?,birth=?,nowclass=?,job=?,address=?,qqnum=?,mail=?,tel=?,about=? WHERE username=?";
+			var  userAddSql_Params = [option.name,option.age,option.sex,option.birth,option.nowclass,option.job,option.address,option.qqnum,option.mail,option.tel,option.about,option.username];
+			console.log(option);
+			con.query(userAddSql,userAddSql_Params,function(err,result){
+				if(err) throw err;
+				console.log(result);
+				if(result.changedRows == 1){
+					res.json({"isChanged":1})
+				}else{
+					res.json({"isChanged":0})
+				}
+
+			});				
+		}
+	})
+
+
+}
+
+//修改密码
+exports.changePassword=function(password,req,res){
+	var  userAddSql = "UPDATE users SET password=? WHERE username=?";
+	var  userAddSql_Params = [password,req.session.username];
+	// console.log(option);
 	con.query(userAddSql,userAddSql_Params,function(err,result){
 		if(err) throw err;
-		console.log(result);
+		// console.log(result);
 		if(result.changedRows == 1){
 			res.json({"isChanged":1})
 		}else{
@@ -33,3 +79,4 @@ exports.changeUser=function(option,req,res){
 
 	});	
 }
+

@@ -11,7 +11,9 @@ exports.addUser=function(option,req,res){
     con.query(userAddSql,userAddSql_Params,function (err, result) {
         if(err) throw err;
         if(result.affectedRows == 1){   //用户添加进去了
+         req.session.username=option.username;
             res.json({"isTrue":0})
+
         }
         else{
             res.json({"isTrue":1})
@@ -22,6 +24,7 @@ exports.addUser=function(option,req,res){
 
 exports.isUserExit=function(username,req,res){
     console.log("进入数据库查询");
+    console.log(username);
     var exit=false;
     con.query("SELECT *FROM users",function(err,result){
         if(err) throw err;

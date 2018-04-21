@@ -6,7 +6,7 @@ var userLoad=require("../lib/userLoad");
 
 
 router.post('/add', function(req, res, next) {
-	console.log("aaa");
+	// console.log("aaa");
   var option={
 		"username":req.body.username,
 		"password":req.body.password,
@@ -15,8 +15,8 @@ router.post('/add', function(req, res, next) {
 });
 
 
-router.get('/isUserExit', function(req, res, next) {
-  addUsers.isUserExit(req.query.username,req,res);
+router.post('/isUserExit', function(req, res, next) {
+  addUsers.isUserExit(req.body.username,req,res);
 });
 
 
