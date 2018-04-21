@@ -1,6 +1,7 @@
 var connection=require("./connect");
 var con=new connection().connection;
 
+
 //  从数据库中获取到用户的信息
 
 
@@ -17,6 +18,20 @@ exports.findUserMsg=function(username,req,res){
 		}
 	})
 }
+
+//查找所有的用户信息
+exports.findAll=function(req,res){
+		var sql="SELECT *FROM user_msg"
+		con.query(sql,function(err,result){
+		if(err) throw err;
+			// console.log(result[i]);
+		res.json({"allUsers":result});
+		//return result;异步需要时间   这个时候返回没有值
+	});
+}
+
+
+
 // 在数据库中修改用户信息
 exports.changeUser=function(option,req,res){
 
@@ -80,3 +95,39 @@ exports.changePassword=function(password,req,res){
 	});	
 }
 
+//根据条件查询
+
+exports.findForType=function(option,req,res){
+	var isSql="";
+	// console.log(option);
+	if(option.name !=""){
+		isSql +="name='"+option.name+"'AND";
+	}
+	if(option.age !=""){
+		isSql +=" age='"+option.age+"'AND";
+	}
+	if(option.sex !=""){
+		isSql +=" sex='"+option.sex+"'AND";	
+	}
+	if(option.nowClass !=""){
+		isSql +=" nowclass='"+option.nowClass+"'AND";
+	}
+	if(option.job !=""){
+		isSql +=" job='"+option.job+"'AND";
+	}
+	if(option.address !=""){
+		isSql +=" address='"+option.address+"'AND";
+	}
+
+	isSql=isSql.substring(0,isSql.length-3);
+	var sql="SELECT *FROM user_msg WHERE "+isSql;
+	// console.log(sql);
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		if(result.length==0){
+			res.json({"searchUser":[],"search":0});
+		}else{
+			res.json({"searchUser":result,"search":1});
+		}
+	})
+};

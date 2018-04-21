@@ -36,4 +36,22 @@ router.post('/changedPassword', function(req, res, next) {
 });
 
 
+router.get('/findAll', function(req, res, next) {
+	userMsg.findAll(req,res);
+});
+router.post('/findForType', function(req, res, next) {
+	var option={
+		"name":req.body.name,
+		"age":req.body.age,
+		"sex":req.body.sex,
+		"nowClass":req.body.nowClass,
+		"job":req.body.job,
+		"address":req.body.address,	
+	}
+
+	// console.log(option);
+	userMsg.findForType(option,req,res);
+});
+
+
 module.exports = router;
