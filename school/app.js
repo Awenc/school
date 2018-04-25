@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var userMsg = require('./routes/userMsg');
-
+var active = require('./routes/active');
 //session的使用
 var session=require("express-session");
 //session的使用
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'html')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/userMsg', userMsg);
-
+app.use('/active', active);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

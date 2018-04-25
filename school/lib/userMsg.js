@@ -101,22 +101,22 @@ exports.findForType=function(option,req,res){
 	var isSql="";
 	// console.log(option);
 	if(option.name !=""){
-		isSql +="name='"+option.name+"'AND";
+		isSql +="name LIKE '%"+option.name+"%' AND";
 	}
 	if(option.age !=""){
-		isSql +=" age='"+option.age+"'AND";
+		isSql +=" age LIKE '%"+option.age+"%' AND";
 	}
 	if(option.sex !=""){
 		isSql +=" sex='"+option.sex+"'AND";	
 	}
 	if(option.nowClass !=""){
-		isSql +=" nowclass='"+option.nowClass+"'AND";
+		isSql +=" nowclass LIKE '%"+option.nowClass+"%' AND";
 	}
 	if(option.job !=""){
-		isSql +=" job='"+option.job+"'AND";
+		isSql +=" job LIKE '%"+option.job+"%' AND";
 	}
 	if(option.address !=""){
-		isSql +=" address='"+option.address+"'AND";
+		isSql +=" address LIKE '%"+option.address+"%' AND";
 	}
 
 	isSql=isSql.substring(0,isSql.length-3);
