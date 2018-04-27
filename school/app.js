@@ -17,7 +17,7 @@ var session=require("express-session");
 
 
 var app = express();
-app.use(session({secret:'abcdd',name:"user" ,cookie:{maxAge: 60*1000*3 } }));
+app.use(session({secret:'abcdd',name:"user" ,cookie:{maxAge: 60*1000*30 } }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
