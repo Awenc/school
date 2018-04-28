@@ -8,9 +8,8 @@ var con=new connection().connection;
 exports.addActive=function(option,req,res){
     console.log("添加新活动到数据库中");
     console.log(option);
-    //添加到user表中
-    var  userAddSql = 'INSERT INTO actives(id,time,tit,content,address,username,ischange) VALUES(0,?,?,?,?,?,?)';
-    var  userAddSql_Params = [option.time,option.tit,option.content,option.address,option.username,option.ischange];
+    var  userAddSql = 'INSERT INTO actives(id,time,tit,content,active_address,username,ischange,isdel) VALUES(0,?,?,?,?,?,?,?)';
+    var  userAddSql_Params = [option.time,option.tit,option.content,option.address,option.username,option.ischange,'0'];
     con.query(userAddSql,userAddSql_Params,function (err, result) {
         if(err) throw err;
         if(result.affectedRows == 1){   //用户添加进去了
@@ -23,7 +22,7 @@ exports.addActive=function(option,req,res){
 }
 //获取自己的所有活动
 exports.getAllActive=function(username,req,res){
-		var sql="SELECT *FROM actives WHERE username=?";
+		var sql="SELECT *FROM actives WHERE username=? and isdel != '1'";
 		var sql_params=[username];
 		con.query(sql,sql_params,function(err,result){
 		if(err) throw err;
@@ -35,25 +34,42 @@ exports.getAllActive=function(username,req,res){
 
 //删除一个自己的活动
 exports.delActive=function(id,req,res){
-	console.log("正在删除"+id);
-		var sql="DELETE FROM actives WHERE id =?";
-		var sql_val=[id];
-		con.query(sql,sql_val,function(err,result){
-			if(err) throw err;
-			// console.log(result);
-			if(result.affectedRows == 1){
-				res.json({"isDel":0});
-			}else{
-				res.json({"isDel":1});
-			}
-		});	
+	//删除活动并没有直接删除 而是不可见 等管理员删除
+	var  Sql = "UPDATE actives SET isdel='1' WHERE id=?";
+	var  Sql_Params = id;
+	// console.log(option);
+	con.query(Sql,Sql_Params,function(err,result){
+		if(err) throw err;
+		// console.log(result);
+		if(result.changedRows == 1){
+			//删除修改
+			res.json({"isDel":0});
+		}else{
+			//删除失败
+			res.json({"isDel":1});
+		}
+
+	});
+
+	// console.log("正在删除"+id);
+	// 	var sql="DELETE FROM actives WHERE id =?";
+	// 	var sql_val=[id];
+	// 	con.query(sql,sql_val,function(err,result){
+	// 		if(err) throw err;
+	// 		// console.log(result);
+	// 		if(result.affectedRows == 1){
+	// 			res.json({"isDel":0});
+	// 		}else{
+	// 			res.json({"isDel":1});
+	// 		}
+	// 	});	
 }
 
 //更新一个活动
 
 exports.updataActive=function(option,req,res){
-	var  Sql = "UPDATE actives SET time=?,tit=?,content=?,address=?,ischange=? WHERE id=?";
-	var  Sql_Params = [option.time,option.tit,option.content,option.address,option.ischange,option.id,];
+	var  Sql = "UPDATE actives SET time=?,tit=?,content=?,active_address=?,ischange=?,isdel='0' WHERE id=?";
+	var  Sql_Params = [option.time,option.tit,option.content,option.address,option.ischange,option.id];
 	// console.log(option);
 	con.query(Sql,Sql_Params,function(err,result){
 		if(err) throw err;
