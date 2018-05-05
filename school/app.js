@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var userMsg = require('./routes/userMsg');
 var active = require('./routes/active');
 var joinActive = require('./routes/joinActive');
+var admin = require('./routes/admin');
 //session的使用
 var session=require("express-session");
 //session的使用
@@ -30,13 +31,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'html')));
-
+// app.use(express.static(path.join(__dirname, 'html')));
+app.use(express.static(path.join(__dirname, 'admin')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/userMsg', userMsg);
 app.use('/active', active);
 app.use('/joinActive', joinActive);
+app.use('/admin', admin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
