@@ -151,3 +151,31 @@ exports.delUser=function(username,req,res){
      }); 
 
 }
+exports.getAllActive=function(req,res){
+    var sql="select * from actives,user_msg where actives.username =user_msg.username"
+    con.query(sql,function(err,result){
+        
+        if(result.length!=0){
+            res.json({"activeMsg":result,"isOk":1})
+        }else{
+            res.json({"isOk":0})
+        }
+    })
+
+}
+
+exports.delActive=function(id,req,res){
+    console.log("正在删除"+id);
+     var sql="DELETE FROM actives WHERE id =?";
+     var sql_val=[id];
+     con.query(sql,sql_val,function(err,result){
+         if(err) throw err;
+         // console.log(result);
+         if(result.affectedRows == 1){
+             res.json({"isDel":0});
+         }else{
+             res.json({"isDel":1});
+         }
+     }); 
+
+}

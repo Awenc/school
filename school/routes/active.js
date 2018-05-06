@@ -77,5 +77,4 @@ router.post('/allCount', function(req, res, next) {
 router.post('/getAllJoinUsers', function(req, res, next) {
 	allActive.getAllJoinUsers(req.body.id,req,res);
 });
-
 module.exports = router;

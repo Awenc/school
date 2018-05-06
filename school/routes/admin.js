@@ -44,4 +44,12 @@ router.post('/deluser', function(req, res, next) {
 	var username=req.body.username;
 	adminMsg.delUser(username,req,res);
 });
+router.get('/getAllActive', function(req, res, next) {
+
+	adminMsg.getAllActive(req,res);
+});
+router.post('/delActive', function(req, res, next) {
+
+	adminMsg.delActive(req.body.id,req,res);
+});
 module.exports = router;
